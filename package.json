@@ -1,15 +1,18 @@
 {
   "name": "testes-automatizados",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "npx nodemon index.test.js"
+    "dev": "node --watch api.js",
+    "test-dev": "node --test --watch api.test.js",
+    "test": "node --test api.test.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "description": "",
   "dependencies": {
-    "nodemon": "^2.0.22"
+    "jsonwebtoken": "^9.0.0"
   }
 }
