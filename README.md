@@ -9,5 +9,5 @@ npm run dev
 
 Para rodar os testes:
 ```bash
-test-dev
+npm run test-dev
 ```
