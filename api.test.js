@@ -4,6 +4,7 @@ const BASE_URL = 'http://localhost:3000'
 
 describe('API Workflow', () => {
   let _server = {}
+  let _globalToken = ''
 
   before(async () => {
     _server = (await import('./api.js')).app
@@ -38,5 +39,19 @@ describe('API Workflow', () => {
 
     const response = await request.json()
     ok(response.token, 'token should be present')
+    _globalToken = response.token
+  })
+
+  it('should not be allowed to acesss private data without token', async() =>{
+    const request = await fetch(`${BASE_URL}/login`, {
+      method: 'GET',
+      headers: {
+        authorization: ''
+      }
+    })
+    strictEqual(request.status, 400)
+
+    const response = await request.json()
+    deepStrictEqual(response, {error: 'invalid token!'})
   })
 })
