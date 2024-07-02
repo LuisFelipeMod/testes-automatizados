@@ -54,4 +54,16 @@ describe('API Workflow', () => {
     const response = await request.json()
     deepStrictEqual(response, {error: 'invalid token!'})
   })
+  it('should be allowed to acesss private data with valid token', async() =>{
+    const request = await fetch(`${BASE_URL}/login`, {
+      method: 'GET',
+      headers: {
+        authorization: _globalToken
+      }
+    })
+    strictEqual(request.status, 200)
+
+    const response = await request.json()
+    deepStrictEqual(response, {result: 'valid token... welcome!!!'})
+  })
 })
