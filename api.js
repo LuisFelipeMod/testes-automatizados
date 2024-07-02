@@ -39,7 +39,7 @@ async function handler(request, response) {
     response.writeHead(400)
     return response.end(JSON.stringify({ error: 'invalid token!' }))
   }
-  response.end(JSON.stringify({ result: 'Hello World!!!' }));
+  response.end(JSON.stringify({ result: 'valid token... welcome!!!' }));
 };
 
 const app = createServer(handler).listen(3000, () =>
